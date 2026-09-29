@@ -487,10 +487,10 @@ footer a{color:#A9C6E4}
 }
 .fixbar .gov{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);line-height:1.7}
 .fixbar .mob{display:none}
-.fixbar .ed{display:flex;align-items:center;gap:14px;line-height:1.5}
-.fixbar .edtxt{text-align:right}
-.fixbar .mapa{height:44px;width:auto;flex:none;overflow:visible}
-.fixbar .mapa path{fill:rgba(255,255,255,.07);stroke:rgba(255,255,255,.4);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.fixbar .ed{position:relative;line-height:1.5}
+.fixbar .edtxt{position:relative;z-index:1;text-align:center}
+.fixbar .mapa{position:absolute;z-index:0;left:-38px;top:50%;height:48px;width:auto;transform:translateY(-50%);overflow:visible;pointer-events:none}
+.fixbar .mapa path{fill:rgba(255,255,255,.06);stroke:rgba(255,255,255,.26);stroke-width:1.2;vector-effect:non-scaling-stroke;stroke-linejoin:round}
 .fixbar .edtxt b{display:block;font-size:11.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#fff}
 .fixbar .edtxt span{display:block;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62)}
 body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
@@ -508,7 +508,7 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
   .fixbar .ed{position:static;display:block}
   .fixbar .edtxt{text-align:center}
   .fixbar .inner{position:relative;overflow:hidden}
-  .fixbar .mapa{position:absolute;left:10px;top:50%;height:66px;transform:translateY(-50%);opacity:.45;z-index:0}
+  .fixbar .mapa{position:absolute;left:8px;top:50%;height:66px;transform:translateY(-50%);opacity:.7;z-index:0}
   .fixbar .gov,.fixbar .edtxt{position:relative;z-index:1}
   .fixbar .edtxt b{display:inline;font-size:9px;letter-spacing:.22em}
   .fixbar .edtxt span{display:inline;font-size:9px}
