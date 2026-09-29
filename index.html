@@ -244,7 +244,7 @@ a{color:var(--azul);text-decoration-thickness:1px;text-underline-offset:2px}
 @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-26px,26px,0) scale(1.07)}}
 .hero .inner{max-width:var(--max);margin:0 auto;padding:56px 28px 44px}
 .hero .org{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.72);line-height:1.85}
-.hero h1{font-size:clamp(30px,4vw,46px);line-height:1.02;font-weight:900;letter-spacing:-.035em;margin:0 0 14px}
+.hero h1{display:flex;flex-wrap:wrap;align-items:center;gap:6px 16px;font-size:clamp(28px,3.5vw,44px);line-height:1.02;font-weight:900;letter-spacing:-.035em;margin:0 0 14px}
 .hero .sub{font-size:clamp(16px,1.6vw,18px);font-weight:600;color:rgba(255,255,255,.96);max-width:40ch;margin:0;line-height:1.3}
 .hero .desc{margin:18px 0 0;max-width:56ch;color:#EAF1F8;font-size:14.5px;line-height:1.6}
 .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}
@@ -516,34 +516,19 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
 }
 
 /* ---------- capa em duas colunas ---------- */
+.hero .sigla{font-size:.5em;font-weight:900;letter-spacing:.02em;line-height:1;padding:.42em .7em;border-radius:.5em;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:40px;align-items:center}
 .hero .bar{width:44px;height:4px;border-radius:4px;background:linear-gradient(90deg,#7FAFDA,rgba(127,175,218,.2));margin-bottom:20px}
 .hero-art{display:flex;justify-content:center}
 .mapbox{position:relative;width:min(100%,460px);aspect-ratio:11.1814/8.652}
 .mapbox svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 22px rgba(127,175,218,.38))}
 .mapbox path{fill:rgba(127,175,218,.13);stroke:rgba(214,232,250,.85);stroke-width:1.6;vector-effect:non-scaling-stroke;stroke-linejoin:round}
-.mapbox .bh{position:absolute;left:63.5%;top:65.5%;transform:translate(-4px,-50%);display:flex;align-items:center;gap:8px}
-.mapbox .bh i{width:9px;height:9px;border-radius:50%;background:#fff;box-shadow:0 0 0 0 rgba(255,255,255,.6);animation:pulso 2.4s ease-out infinite;flex:none}
-.mapbox .bh b{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);white-space:nowrap}
-@keyframes pulso{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}80%,100%{box-shadow:0 0 0 14px rgba(255,255,255,0)}}
-.hero-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:38px}
-.hero-stats div{
-  border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.07);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;
-}
-.hero-stats b{font-size:30px;font-weight:900;letter-spacing:-.03em;line-height:1;color:#fff}
-.hero-stats span{font-size:12.5px;font-weight:600;line-height:1.35;color:rgba(255,255,255,.72)}
 @media(max-width:860px){
   .hero-grid{grid-template-columns:1fr;gap:18px}
   .hero-art{order:-1;justify-content:flex-start}
   .mapbox{width:150px}
-  .mapbox .bh b{display:none}
-  .hero-stats{grid-template-columns:1fr;gap:8px;margin-top:26px}
-  .hero-stats div{padding:10px 14px}
-  .hero-stats b{font-size:24px;min-width:34px}
 }
-@media(prefers-reduced-motion:reduce){.mapbox .bh i{animation:none}}
+@media(max-width:520px){.hero h1{font-size:24px}}
 
 /* ---------- entrada com movimento ---------- */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.8,.3,1), transform .6s cubic-bezier(.2,.8,.3,1)}
@@ -590,7 +575,7 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
     <div class="hero-grid">
       <div class="hero-txt">
         <div class="bar"></div>
-        <h1>Manual de<br>Boas Práticas</h1>
+        <h1><span class="sigla">CMA</span><span class="tit">Manual de Boas Práticas</span></h1>
     <div class="sub">Comissões Macrorregionais de Acompanhamento — CMA</div>
     <p class="desc">Um guia prático para coordenadores e membros: o que a Comissão faz, como se organiza, como analisa recursos e como registra suas decisões.</p>
     <div class="chips">
@@ -599,6 +584,7 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
       <a href="docs/resolucao-11044-2026.pdf" download data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 19h16"/></svg>Resolução nº 11.044/2026</a>
       <a href="docs/decreto-49080-2025.pdf" download data-doc><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 19h16"/></svg>Decreto nº 49.080/2025</a>
       <a href="https://sesresolve.saude.mg.gov.br/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 10 14M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>SESResolve</a>
+      <a href="https://app.powerbi.com/view?r=eyJrIjoiYjkwMmUyODMtZTI0ZC00ZDU3LTlmYTItMzBjYzIxOTQwNGY2IiwidCI6Ijg3ZTRkYTJiLTgyZGYtNDhmNi05MTU3LTY5YzNjYTYwMGRmMiIsImMiOjR9" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6M20 4 10 14M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>BI de Membros</a>
     </div>
     <div class="cta">
       <a class="btn primary" href="#c1">Começar a leitura</a>
@@ -608,14 +594,8 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
       <div class="hero-art" aria-hidden="true">
         <div class="mapbox">
           <svg viewBox="-51.0382 14.2532 11.1814 8.652" focusable="false"><g transform="scale(0.0001,-0.0001)"><path d="M-476797,-183561l-898,-622l-910,-219l-41,-89l-900,-509l-724,639l-2002,901l-446,166l-700,-414l-3120,280l-1334,-104l-1305,473l-418,-176l-943,-791l-1520,-115l-435,-1087l-434,-411l-807,-709l-1128,1025l-614,-73l-1754,-698l-347,-3l-369,-341l-2342,423l-510,-704l-1902,-123l-823,-761l-1209,-1611l-620,-1775l-1105,-359l-874,-522l-73,-262l-876,-976l-474,-1120l498,-505l-1094,58l44,-1228l-1076,-1015l47,-989l330,-2947l1145,950l419,228l1577,514l722,552l522,474l1079,274l1167,-833l1656,-60l656,12l621,-421l1379,-208l1568,125l1362,47l1594,-581l2037,88l-558,-1476l407,-1128l55,-291l761,-559l629,442l548,1170l799,-173l230,-2323l765,-338l194,380l-200,1236l650,1138l925,112l827,-167l1095,334l858,77l2330,-20l152,824l1266,-1029l956,1120l818,-893l296,495l189,864l883,38l1229,-612l905,534l596,245l1604,-1460l981,-1039l-15,-83l-441,-641l-168,-1271l700,-724l793,-497l65,-203l-51,-45l418,-1164l-852,-494l-407,-1241l-5,-10l461,-973l334,-817l303,-1177l-9,-327l743,-815l475,-899l-148,-650l1269,151l1031,365l168,106l1171,-195l315,-507l1072,-588l-29,-763l-429,-880l-598,-231l-162,-921l-600,-690l728,-1574l-320,-145l-696,-738l1210,-531l-471,-442l-262,23l-85,-382l-430,-901l624,-594l446,-726l664,-309l934,-522l322,-777l312,-636l-800,-420l1405,-611l-419,-541l296,-850l1527,400l1415,-318l942,472l855,-217l1030,355l558,662l-929,325l1111,856l-360,330l513,454l125,-779l897,495l-39,-512l1000,624l600,-307l204,-325l1309,423l1023,807l424,335l216,73l1369,147l1220,474l345,222l0,13l59,106l1376,210l40,-78l1182,482l866,747l975,36l997,-140l707,276l98,119l2023,821l2127,832l555,-126l405,-103l770,303l1544,-42l903,562l201,-40l989,-210l965,-4l6,-58l-117,-694l1401,716l926,421l2443,1174l593,269l1428,602l35,14l820,364l1111,339l-861,1228l67,90l914,957l-208,595l398,846l114,51l216,1166l73,609l208,285l560,570l384,446l-47,72l-661,490l1750,385l462,919l15,496l535,281l240,747l253,2079l259,63l-39,548l-332,131l-229,362l374,620l471,508l182,532l908,-1l2504,-4l37,13l1140,2685l265,-46l844,507l124,1243l61,950l1963,1669l58,817l341,1724l-31,285l-289,1006l-965,656l-42,1117l-721,542l-1061,368l108,565l856,-7l1214,-392l1086,217l-247,1248l-1094,565l251,1066l28,703l-1588,177l376,343l-147,971l1070,1431l2786,575l-1291,1214l1039,293l1365,-558l1350,1208l1586,-310l1460,-575l105,855l-118,1606l-165,-6l-1039,1193l-704,55l-685,1216l-365,411l-852,912l569,725l-309,1341l864,2622h587l259,-113l64,85l1197,-110l-254,2044l-62,182l377,1052l1176,-61l477,1302l930,1015l994,635l610,1705l-580,1138l-896,-18l-1231,947l-1082,1036l-1893,-22l-250,441l-698,-360l-1251,687l-557,616l-671,-468l-491,665l-3257,-1244l-1877,287l-120,1047l-197,1436l-24,20l-918,827l-3038,2723l-424,377l-80,-11l-1431,-743l-951,50l-1248,847l-923,-390l-120,113l-2014,995l-367,313l-1030,432l-2534,1750l-668,567l-2361,569l-1362,-186l-1758,-1206l-438,-252l-2,1l-1812,1001l-1713,628l23,901l628,1747l352,485l-1864,652l-761,-98l-2503,306l-1158,-284l-1454,-554l-1842,-1301l-918,-327l-438,-994l-1633,-813l-555,-725l-1098,83l-1001,-890l-3112,-1804l-1229,-1063l-2319,-335l-1054,-1108l1110,2991l-715,909l-18,-6l-1374,-741l-1425,490l-29,858l-1812,1105l-571,-1109l578,-2359l-234,-55l-993,-331l-2315,792l-682,-472l-122,-1475l636,-804l242,-878l-810,-699l-156,-1202l635,-468l764,-2605l-1463,-460l-1841,-108l-1734,-1089l15,-137l-141,-1591l-1318,-2555l417,-1098l1172,-514l698,-947l173,-1542l810,-1040l-547,-853l-1699,-1025l-1366,-1822l-222,226l-138,-858l-120,-452l697,-769l1538,-94l483,-680l-1064,-2199l878,-2095l-1245,-1011l-219,-233l-1772,-810l-32,-695l-695,-404Z"/></g></svg>
-          <span class="bh"><i></i><b>Belo Horizonte</b></span>
-        </div>
+          </div>
       </div>
-    </div>
-    <div class="hero-stats">
-      <div><b>3</b><span>Comissões em cada macrorregião</span></div>
-      <div><b>3</b><span>Fases do ciclo de monitoramento</span></div>
-      <div><b>15</b><span>Seções de leitura e um checklist</span></div>
     </div>
   </div></div>
 </div>
