@@ -244,7 +244,7 @@ a{color:var(--azul);text-decoration-thickness:1px;text-underline-offset:2px}
 @keyframes float{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(-26px,26px,0) scale(1.07)}}
 .hero .inner{max-width:var(--max);margin:0 auto;padding:84px 22px 72px}
 .hero .org{font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.72);line-height:1.85}
-.hero h1{font-size:clamp(36px,6.6vw,64px);line-height:1.02;font-weight:900;letter-spacing:-.035em;margin:20px 0 14px}
+.hero h1{font-size:clamp(36px,6.6vw,64px);line-height:1.02;font-weight:900;letter-spacing:-.035em;margin:0 0 14px}
 .hero .sub{font-size:clamp(18px,2.4vw,23px);font-weight:600;color:rgba(255,255,255,.96);max-width:32ch;line-height:1.3}
 .hero .desc{margin-top:22px;max-width:60ch;color:#EAF1F8;font-size:17.5px;line-height:1.6}
 .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
@@ -472,6 +472,42 @@ footer a{color:#A9C6E4}
 .top.show{opacity:1;pointer-events:auto;transform:none}
 .top:hover{transform:translateY(-2px)}
 
+/* ---------- rodapé fixo ---------- */
+:root{--rodape-h:64px}
+.fixbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:45;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  background:linear-gradient(155deg,#0A1526 0%,#112743 100%);
+  border-top:1px solid rgba(255,255,255,.14);
+  color:#fff;
+}
+.fixbar .inner{
+  max-width:var(--max);margin:0 auto;padding:11px 22px;
+  display:flex;align-items:center;justify-content:space-between;gap:8px 28px;
+}
+.fixbar .gov{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);line-height:1.7}
+.fixbar .mob{display:none}
+.fixbar .ed{text-align:right;line-height:1.5}
+.fixbar .ed b{display:block;font-size:11.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#fff}
+.fixbar .ed span{display:block;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62)}
+body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
+.top{bottom:calc(var(--rodape-h) + 16px + env(safe-area-inset-bottom,0px))}
+.toc{max-height:calc(100vh - 96px - var(--rodape-h) - 24px)}
+@media(max-width:960px){
+  .toc{max-height:none;padding-bottom:calc(var(--rodape-h) + 44px)}
+}
+@media(max-width:760px){
+  :root{--rodape-h:62px}
+  .fixbar .inner{flex-direction:column;justify-content:center;gap:2px;padding:8px 14px;text-align:center}
+  .fixbar .gov{font-size:8.5px;letter-spacing:.04em;line-height:1.45}
+  .fixbar .gov br{display:none}
+  .fixbar .mob{display:inline}
+  .fixbar .ed{text-align:center}
+  .fixbar .ed b{display:inline;font-size:9px;letter-spacing:.22em}
+  .fixbar .ed span{display:inline;font-size:9px}
+  .fixbar .ed span::before{content:" · "}
+}
+
 /* ---------- entrada com movimento ---------- */
 .rv{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.2,.8,.3,1), transform .6s cubic-bezier(.2,.8,.3,1)}
 .rv.in{opacity:1;transform:none}
@@ -483,7 +519,7 @@ footer a{color:#A9C6E4}
 }
 
 @media print{
-  .topbar,.toc,.top,.hero .cta,.reset,.progress,.hero .orb,.hero .grid-lines{display:none!important}
+  .topbar,.fixbar,.toc,.top,.hero .cta,.reset,.progress,.hero .orb,.hero .grid-lines{display:none!important}
   body{font-size:11pt;background:#fff}
   .card,.note,.tw{background:#fff;box-shadow:none;border:1px solid #ccc;backdrop-filter:none}
   section{page-break-inside:avoid}
@@ -514,7 +550,6 @@ footer a{color:#A9C6E4}
   <div class="orb b"></div>
   <div class="grid-lines"></div>
   <div class="inner">
-    <div class="org">Governo do Estado de Minas Gerais · Secretaria de Estado de Saúde<br>Subsecretaria de Regionalização · Superintendência de Integração Regional</div>
     <h1>Manual de<br>Boas Práticas</h1>
     <div class="sub">Comissões Macrorregionais de Acompanhamento — CMA</div>
     <p class="desc">Um guia prático para coordenadores e membros: o que a Comissão faz, como se organiza, como analisa recursos e como registra suas decisões.</p>
@@ -1342,11 +1377,25 @@ footer a{color:#A9C6E4}
     </div>
   </div>
 </footer>
+<div class="fixbar">
+  <div class="inner">
+    <div class="gov">Governo do Estado de Minas Gerais · Secretaria de Estado de Saúde<span class="mob"> · </span><br>Subsecretaria de Regionalização · Superintendência de Integração Regional</div>
+    <div class="ed"><b>Edição 2026</b><span>DMPS - Coordenação de Monitoramento e Integração Regional</span></div>
+  </div>
+</div>
 <button class="top" id="top" aria-label="Voltar ao topo">↑</button>
 
 <script>
 (function(){
   var reduz = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // rodapé fixo: mede a altura real e reserva o espaço
+  var fb=document.querySelector('.fixbar');
+  function medeRodape(){ if(fb) document.documentElement.style.setProperty('--rodape-h', fb.offsetHeight+'px'); }
+  medeRodape();
+  window.addEventListener('resize',medeRodape);
+  if(window.ResizeObserver && fb) new ResizeObserver(medeRodape).observe(fb);
 
   // menu mobile
   var toc=document.getElementById('toc');
