@@ -487,9 +487,12 @@ footer a{color:#A9C6E4}
 }
 .fixbar .gov{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.78);line-height:1.7}
 .fixbar .mob{display:none}
-.fixbar .ed{text-align:right;line-height:1.5}
-.fixbar .ed b{display:block;font-size:11.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#fff}
-.fixbar .ed span{display:block;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62)}
+.fixbar .ed{display:flex;align-items:center;gap:14px;line-height:1.5}
+.fixbar .edtxt{text-align:right}
+.fixbar .mapa{height:44px;width:auto;flex:none;overflow:visible}
+.fixbar .mapa path{fill:rgba(255,255,255,.07);stroke:rgba(255,255,255,.4);stroke-width:1.4;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.fixbar .edtxt b{display:block;font-size:11.5px;font-weight:600;letter-spacing:.32em;text-transform:uppercase;color:#fff}
+.fixbar .edtxt span{display:block;font-size:11.5px;font-weight:500;color:rgba(255,255,255,.62)}
 body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
 .top{bottom:calc(var(--rodape-h) + 16px + env(safe-area-inset-bottom,0px))}
 .toc{max-height:calc(100vh - 96px - var(--rodape-h) - 24px)}
@@ -502,10 +505,14 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
   .fixbar .gov{font-size:8.5px;letter-spacing:.04em;line-height:1.45}
   .fixbar .gov br{display:none}
   .fixbar .mob{display:inline}
-  .fixbar .ed{text-align:center}
-  .fixbar .ed b{display:inline;font-size:9px;letter-spacing:.22em}
-  .fixbar .ed span{display:inline;font-size:9px}
-  .fixbar .ed span::before{content:" · "}
+  .fixbar .ed{position:static;display:block}
+  .fixbar .edtxt{text-align:center}
+  .fixbar .inner{position:relative;overflow:hidden}
+  .fixbar .mapa{position:absolute;left:10px;top:50%;height:66px;transform:translateY(-50%);opacity:.45;z-index:0}
+  .fixbar .gov,.fixbar .edtxt{position:relative;z-index:1}
+  .fixbar .edtxt b{display:inline;font-size:9px;letter-spacing:.22em}
+  .fixbar .edtxt span{display:inline;font-size:9px}
+  .fixbar .edtxt span::before{content:" · "}
 }
 
 /* ---------- entrada com movimento ---------- */
@@ -1380,7 +1387,7 @@ body{padding-bottom:calc(var(--rodape-h) + env(safe-area-inset-bottom,0px))}
 <div class="fixbar">
   <div class="inner">
     <div class="gov">Governo do Estado de Minas Gerais · Secretaria de Estado de Saúde<span class="mob"> · </span><br>Subsecretaria de Regionalização · Superintendência de Integração Regional</div>
-    <div class="ed"><b>Edição 2026</b><span>DMPS - Coordenação de Monitoramento e Integração Regional</span></div>
+    <div class="ed"><svg class="mapa" viewBox="-51.0382 14.2532 11.1814 8.652" aria-hidden="true" focusable="false"><g transform="scale(0.0001,-0.0001)"><path d="M-476797,-183561l-898,-622l-910,-219l-41,-89l-900,-509l-724,639l-2002,901l-446,166l-700,-414l-3120,280l-1334,-104l-1305,473l-418,-176l-943,-791l-1520,-115l-435,-1087l-434,-411l-807,-709l-1128,1025l-614,-73l-1754,-698l-347,-3l-369,-341l-2342,423l-510,-704l-1902,-123l-823,-761l-1209,-1611l-620,-1775l-1105,-359l-874,-522l-73,-262l-876,-976l-474,-1120l498,-505l-1094,58l44,-1228l-1076,-1015l47,-989l330,-2947l1145,950l419,228l1577,514l722,552l522,474l1079,274l1167,-833l1656,-60l656,12l621,-421l1379,-208l1568,125l1362,47l1594,-581l2037,88l-558,-1476l407,-1128l55,-291l761,-559l629,442l548,1170l799,-173l230,-2323l765,-338l194,380l-200,1236l650,1138l925,112l827,-167l1095,334l858,77l2330,-20l152,824l1266,-1029l956,1120l818,-893l296,495l189,864l883,38l1229,-612l905,534l596,245l1604,-1460l981,-1039l-15,-83l-441,-641l-168,-1271l700,-724l793,-497l65,-203l-51,-45l418,-1164l-852,-494l-407,-1241l-5,-10l461,-973l334,-817l303,-1177l-9,-327l743,-815l475,-899l-148,-650l1269,151l1031,365l168,106l1171,-195l315,-507l1072,-588l-29,-763l-429,-880l-598,-231l-162,-921l-600,-690l728,-1574l-320,-145l-696,-738l1210,-531l-471,-442l-262,23l-85,-382l-430,-901l624,-594l446,-726l664,-309l934,-522l322,-777l312,-636l-800,-420l1405,-611l-419,-541l296,-850l1527,400l1415,-318l942,472l855,-217l1030,355l558,662l-929,325l1111,856l-360,330l513,454l125,-779l897,495l-39,-512l1000,624l600,-307l204,-325l1309,423l1023,807l424,335l216,73l1369,147l1220,474l345,222l0,13l59,106l1376,210l40,-78l1182,482l866,747l975,36l997,-140l707,276l98,119l2023,821l2127,832l555,-126l405,-103l770,303l1544,-42l903,562l201,-40l989,-210l965,-4l6,-58l-117,-694l1401,716l926,421l2443,1174l593,269l1428,602l35,14l820,364l1111,339l-861,1228l67,90l914,957l-208,595l398,846l114,51l216,1166l73,609l208,285l560,570l384,446l-47,72l-661,490l1750,385l462,919l15,496l535,281l240,747l253,2079l259,63l-39,548l-332,131l-229,362l374,620l471,508l182,532l908,-1l2504,-4l37,13l1140,2685l265,-46l844,507l124,1243l61,950l1963,1669l58,817l341,1724l-31,285l-289,1006l-965,656l-42,1117l-721,542l-1061,368l108,565l856,-7l1214,-392l1086,217l-247,1248l-1094,565l251,1066l28,703l-1588,177l376,343l-147,971l1070,1431l2786,575l-1291,1214l1039,293l1365,-558l1350,1208l1586,-310l1460,-575l105,855l-118,1606l-165,-6l-1039,1193l-704,55l-685,1216l-365,411l-852,912l569,725l-309,1341l864,2622h587l259,-113l64,85l1197,-110l-254,2044l-62,182l377,1052l1176,-61l477,1302l930,1015l994,635l610,1705l-580,1138l-896,-18l-1231,947l-1082,1036l-1893,-22l-250,441l-698,-360l-1251,687l-557,616l-671,-468l-491,665l-3257,-1244l-1877,287l-120,1047l-197,1436l-24,20l-918,827l-3038,2723l-424,377l-80,-11l-1431,-743l-951,50l-1248,847l-923,-390l-120,113l-2014,995l-367,313l-1030,432l-2534,1750l-668,567l-2361,569l-1362,-186l-1758,-1206l-438,-252l-2,1l-1812,1001l-1713,628l23,901l628,1747l352,485l-1864,652l-761,-98l-2503,306l-1158,-284l-1454,-554l-1842,-1301l-918,-327l-438,-994l-1633,-813l-555,-725l-1098,83l-1001,-890l-3112,-1804l-1229,-1063l-2319,-335l-1054,-1108l1110,2991l-715,909l-18,-6l-1374,-741l-1425,490l-29,858l-1812,1105l-571,-1109l578,-2359l-234,-55l-993,-331l-2315,792l-682,-472l-122,-1475l636,-804l242,-878l-810,-699l-156,-1202l635,-468l764,-2605l-1463,-460l-1841,-108l-1734,-1089l15,-137l-141,-1591l-1318,-2555l417,-1098l1172,-514l698,-947l173,-1542l810,-1040l-547,-853l-1699,-1025l-1366,-1822l-222,226l-138,-858l-120,-452l697,-769l1538,-94l483,-680l-1064,-2199l878,-2095l-1245,-1011l-219,-233l-1772,-810l-32,-695l-695,-404Z"/></g></svg><div class="edtxt"><b>Edição 2026</b><span>DMPS - Coordenação de Monitoramento e Integração Regional</span></div></div>
   </div>
 </div>
 <button class="top" id="top" aria-label="Voltar ao topo">↑</button>
